@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Wine.Measurements.API.DTO;
 using Wine.Measurements.Common.Data;
-using Wine.Measurements.Common.Models;
 using Wine.Measurements.Security.Common;
 
 namespace Wine.Measurements.API.Controllers;
