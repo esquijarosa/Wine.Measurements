@@ -22,7 +22,7 @@ public class LoginController : Controller
     }
 
     [AllowAnonymous]
-    [HttpGet]
+    [HttpPost]
     public ActionResult Login([FromBody] LoginUserDTO user)
     {
         if (_repository.GetUser(user.UserName, user.PasswordHash) == null)
@@ -34,7 +34,7 @@ public class LoginController : Controller
     }
 
     [AllowAnonymous]
-    [HttpGet("token")]
+    [HttpPost("token")]
     public ActionResult Token([FromBody] LoginUserDTO user)
     {
         var validUser = _repository.GetUser(user.UserName, user.PasswordHash);
