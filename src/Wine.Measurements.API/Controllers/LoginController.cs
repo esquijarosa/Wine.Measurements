@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Wine.Measurements.API.DTO;
 using Wine.Measurements.Common.Data;
+using Wine.Measurements.Common.Models;
 using Wine.Measurements.Security.Common;
 
 namespace Wine.Measurements.API.Controllers;
@@ -19,6 +20,18 @@ public class LoginController : Controller
     {
         _authenticator = authenticator;
         _repository = repository;
+    }
+
+    [AllowAnonymous]
+    [HttpGet]
+    public ActionResult Login([FromBody] LoginUserDTO user)
+    {
+        if (_repository.GetUser(user.UserName, user.PasswordHash) == null)
+        {
+            return Unauthorized();
+        }
+
+        return Ok();
     }
 
     [AllowAnonymous]
