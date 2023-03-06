@@ -76,6 +76,20 @@ public class SqlMeasurementsRepository : IMeasurementsRepository
     public void UpdateMeasurement(Measurement measurement)
     {
         using IDbConnection conn = new SqlConnection(_configuration.GetConnectionString(_connectionId));
-        conn.Execute("[dbo].[sp_update_measurement]", measurement, commandType: CommandType.StoredProcedure);
+        conn.Execute("[dbo].[sp_update_measurement]",
+            new
+            {
+                measurement.Id,
+                measurement.Year,
+                measurement.VarietyId,
+                measurement.TypeId,
+                measurement.Color,
+                measurement.Graduation,
+                measurement.Temperature,
+                measurement.PH,
+                measurement.Observations,
+                measurement.RecordedAt,
+                measurement.RecordedBy
+            }, commandType: CommandType.StoredProcedure);
     }
 }
