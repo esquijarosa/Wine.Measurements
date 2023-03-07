@@ -23,14 +23,16 @@ public class LoginController : Controller
 
     [AllowAnonymous]
     [HttpPost]
-    public ActionResult Login([FromBody] LoginUserDTO user)
+    public ActionResult<RegisteredUserDTO> Login([FromBody] LoginUserDTO user)
     {
-        if (_repository.GetUser(user.UserName, user.PasswordHash) == null)
+        var registeredUser = _repository.GetUser(user.UserName, user.PasswordHash);
+
+        if (registeredUser == null)
         {
             return Unauthorized();
         }
 
-        return Ok();
+        return Ok(registeredUser);
     }
 
     [AllowAnonymous]
