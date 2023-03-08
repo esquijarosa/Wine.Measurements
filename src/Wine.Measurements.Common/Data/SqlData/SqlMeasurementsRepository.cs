@@ -3,6 +3,7 @@ using System.Data.SqlClient;
 using System.Data;
 using Wine.Measurements.Common.Models;
 using Dapper;
+using Wine.Measurements.Common.Extesions;
 
 namespace Wine.Measurements.Common.Data.SqlData;
 
@@ -18,6 +19,8 @@ public class SqlMeasurementsRepository : IMeasurementsRepository
     }
     public int AddMeasurement(Measurement measurement)
     {
+        this.ValidateMeasurement(measurement);
+
         using IDbConnection conn = new SqlConnection(_configuration.GetConnectionString(_connectionId));
         return conn.ExecuteScalar<int>(
             "[dbo].[sp_add_measurement]",
@@ -75,6 +78,8 @@ public class SqlMeasurementsRepository : IMeasurementsRepository
 
     public void UpdateMeasurement(Measurement measurement)
     {
+        this.ValidateMeasurement(measurement);
+
         using IDbConnection conn = new SqlConnection(_configuration.GetConnectionString(_connectionId));
         conn.Execute("[dbo].[sp_update_measurement]",
             new

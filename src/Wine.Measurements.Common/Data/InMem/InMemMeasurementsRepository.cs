@@ -1,4 +1,5 @@
-﻿using Wine.Measurements.Common.Models;
+﻿using Wine.Measurements.Common.Extesions;
+using Wine.Measurements.Common.Models;
 
 namespace Wine.Measurements.Common.Data.InMem;
 
@@ -40,6 +41,8 @@ public class InMemMeasurementsRepository : IMeasurementsRepository
 
     public int AddMeasurement(Measurement measurement)
     {
+        this.ValidateMeasurement(measurement);
+
         measurement.Id = GetMeasurementNextId();
         _measurements.Add(measurement.Id, measurement);
         return measurement.Id;
@@ -47,6 +50,8 @@ public class InMemMeasurementsRepository : IMeasurementsRepository
 
     public void UpdateMeasurement(Measurement measurement)
     {
+        this.ValidateMeasurement(measurement);
+
         _measurements[measurement.Id] = measurement;
     }
 

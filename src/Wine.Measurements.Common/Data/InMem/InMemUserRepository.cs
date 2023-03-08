@@ -1,4 +1,5 @@
-﻿using Wine.Measurements.Common.Models;
+﻿using Wine.Measurements.Common.Extesions;
+using Wine.Measurements.Common.Models;
 
 namespace Wine.Measurements.Common.Data.InMem;
 
@@ -20,11 +21,15 @@ public class InMemUserRepository : IUserRepository
 
     public User? GetUser(string username, string passwordHash)
     {
+        this.ValidateLoginData(username, passwordHash);
+
         return _users.SingleOrDefault(u => u.UserName == username && u.PasswordHash == passwordHash);
     }
 
     public void RegisterUser(User user)
     {
+        this.ValidateUser(user);
+
         lock (_syncObj)
         {
             if (_users.SingleOrDefault(u => u.UserName == user.UserName) != null)

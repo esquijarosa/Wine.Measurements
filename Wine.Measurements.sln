@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wine.Measurements.Common", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wine.Measurements.Security.Common", "src\Wine.Measurements.Security.Common\Wine.Measurements.Security.Common.csproj", "{2F7FCAB8-62C6-4791-8D48-E973B67564EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wine.Measurements.Common.Tests", "src\Wine.Measurements.Common.Tests\Wine.Measurements.Common.Tests.csproj", "{B6A6B769-E81C-47BB-8F51-919FE34CEF2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{2F7FCAB8-62C6-4791-8D48-E973B67564EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F7FCAB8-62C6-4791-8D48-E973B67564EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F7FCAB8-62C6-4791-8D48-E973B67564EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6A6B769-E81C-47BB-8F51-919FE34CEF2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6A6B769-E81C-47BB-8F51-919FE34CEF2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6A6B769-E81C-47BB-8F51-919FE34CEF2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6A6B769-E81C-47BB-8F51-919FE34CEF2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
