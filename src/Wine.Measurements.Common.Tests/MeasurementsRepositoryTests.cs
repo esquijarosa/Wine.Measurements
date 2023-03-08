@@ -85,4 +85,17 @@ public class MeasurementsRepositoryTests
         // Act
         repository.UpdateMeasurement(measurement);
     }
+
+    [Fact]
+    public void GetMeasurements_ShouldGetAList()
+    {
+        // Arrange
+        IMeasurementsRepository repository = new InMemMeasurementsRepository();
+
+        // Act
+        var actual = repository.GetAllMeasurements();
+
+        // Assert
+        Assert.NotNull(actual);
+    }
 }

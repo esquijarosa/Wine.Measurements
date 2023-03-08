@@ -66,4 +66,17 @@ public class UserRepositoryTests
         // Act
         repository.RegisterUser(user);
     }
+
+    [Fact]
+    public void GetRegisteredUsers_ShouldGetAList()
+    {
+        // Arrange
+        IUserRepository repository = new InMemUserRepository();
+
+        // Act
+        var actual = repository.GetRegisteredUsers();
+
+        // Assert
+        Assert.NotNull(actual);
+    }
 }
